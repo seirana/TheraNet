@@ -13,6 +13,7 @@ INPUT:
     
 OUTPUT:
     ~/output/suggested_drugs
+    ~/output/gene_drug_gene_matrix
 """
 
 def suggested_drugs():
