@@ -4,10 +4,16 @@ import read_write as rw
 import networkx as nx
 import pandas as pd
 
+'''
+FINITE_INFINITY number must be bigger than longest path in the network of genes. For the simplicity 
+assumed equal to the number of human genes (20,000)
+'''
 FINITE_INFINITY = 20000
 
 def matrix_to_network_guney():
-    
+    '''
+    generates gene-gene network based on Guney's algorithm
+    '''
     file = './data/gene_gene_PPI700_ENSEMBL'
     db = rw.read_csv(file)
 
@@ -29,7 +35,10 @@ def matrix_to_network_guney():
 
 
 def matrix_to_network_edited():
-
+    '''
+    generates gene-gene network based on Guney's algorithm, but the edition of 
+    considering all genes including genes with PPIs or not.
+    '''
     file = './data/gene_gene_PPI700_ENSEMBL'
     pc_genes = './data/protein_coding_genes_ENSEMBL'
     pcg = rw.read_csv(pc_genes)
