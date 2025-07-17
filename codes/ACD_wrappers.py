@@ -305,7 +305,7 @@ def calculate_proximity(network, nodes_from, nodes_to, n_random):
 
 
 
-def calculate_proximity_multiple(which_method, drugs_lst_file, drugs_file, disease_file, check_file, folder, sampling, title):
+def calculate_proximity_multiple(which_method, drugs_lst_file, drugs_file, disease_file, check_file, folder, sampling):
     if which_method == 'edited':
         network = matrix_to_network_edited()
     else: 
@@ -330,5 +330,5 @@ def calculate_proximity_multiple(which_method, drugs_lst_file, drugs_file, disea
         else:
             output.loc[i,:] = [drug,'', '', '', '', '', '', '', '', '', '']
 
-    file =  folder + str(sampling) + '_' + title
+    file =  folder + str(sampling) + '_' + which_method
     rw.write_csv(output,file)
