@@ -330,5 +330,5 @@ def calculate_proximity_multiple(which_method, drugs_lst_file, drugs_file, disea
         else:
             output.loc[i,:] = [drug,'', '', '', '', '', '', '', '', '', '']
 
-    file =  folder + str(sampling) + '_' + which_method
+    file =  folder + 'suggested_drugs_' + which_method
     rw.write_csv(output,file)
