@@ -6,8 +6,9 @@ import pandas as pd
 
 FINITE_INFINITY = 20000
 
-def matrix_to_network_guney(file):
-
+def matrix_to_network_guney():
+    
+    file = './data/gene_gene_PPI700_ENSEMBL'
     db = rw.read_csv(file)
 
     G = nx.Graph()
@@ -27,12 +28,14 @@ def matrix_to_network_guney(file):
 
 
 
-def matrix_to_network_edited(file, pc_genes):
+def matrix_to_network_edited():
 
-    G = nx.Graph()
-
+    file = './data/gene_gene_PPI700_ENSEMBL'
+    pc_genes = './data/protein_coding_genes_ENSEMBL'
     pcg = rw.read_csv(pc_genes)
     db = rw.read_csv(file)
+
+    G = nx.Graph()
 
     genes = pd.concat([pcg.loc[:,'Gene stable ID'],db.loc[:,'gene1']])
     genes = genes.drop_duplicates()
@@ -293,8 +296,12 @@ def calculate_proximity(network, nodes_from, nodes_to, n_random):
 
 
 
-def calculate_proximity_multiple(network, drugs_lst_file, drugs_file, disease_file, check_file, folder, sampling, title):
-
+def calculate_proximity_multiple(which_method, drugs_lst_file, drugs_file, disease_file, check_file, folder, sampling, title):
+    if which_method == 'edited':
+        network = matrix_to_network_edited()
+    else: 
+        network = matrix_to_network_guney()
+        
     drug_to_targets = rw.read_csv(drugs_file)
     drugs = rw.read_csv(drugs_lst_file)
     disease_to_genes = rw.read_csv(disease_file)
