@@ -276,11 +276,8 @@ def calculate_proximity(network, nodes_from, nodes_to, n_random):
     nodes_to_pruned = set(nodes_to) & set(nodes_network)  # union
     
     if len(nodes_from_pruned) == 0 or len(nodes_to_pruned) == 0:
-        return FINITE_INFINITY, FINITE_INFINITY, FINITE_INFINITY, FINITE_INFINITY, FINITE_INFINITY, len(nodes_from_pruned), len(nodes_to_pruned), FINITE_INFINITY
-    if len(nodes_from_pruned) < len(nodes_from):
-        return FINITE_INFINITY, FINITE_INFINITY, FINITE_INFINITY, FINITE_INFINITY, FINITE_INFINITY, len(nodes_from_pruned), len(nodes_to_pruned), FINITE_INFINITY
-    if len(nodes_to_pruned) < len(nodes_to): 
-        return FINITE_INFINITY, FINITE_INFINITY, FINITE_INFINITY, FINITE_INFINITY, FINITE_INFINITY, len(nodes_from_pruned), len(nodes_to_pruned), FINITE_INFINITY    
+        if len(set(nodes_from_pruned) & set(nodes_to_pruned)) == 0:
+            return FINITE_INFINITY, FINITE_INFINITY, FINITE_INFINITY, FINITE_INFINITY, FINITE_INFINITY, len(nodes_from_pruned), len(nodes_to_pruned), FINITE_INFINITY 
     
     shortest_distances = calculate_closest_distance(network, nodes_from_pruned, nodes_to_pruned)
 
