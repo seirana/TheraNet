@@ -20,7 +20,7 @@ import os
 #
 #..........................................................................................................   
 '''
-FINITE_INFINITY number must be bigger than longest path in the network of genes. For the simplicity 
+FINITE_INFINITY number must be bigger than the longest path in the network of genes. For simplicity 
 assumed equal to the number of human genes (20,000)
 '''
 FINITE_INFINITY = 20000
@@ -52,7 +52,7 @@ def matrix_to_network_guney():
 def matrix_to_network_TheraNet():
     '''
     generates gene-gene network based on Guney's algorithm, but the edition of 
-    considering all genes including genes with PPIs or not.
+    considering all genes, including genes with PPIs or not.
     '''
     file = './TheraNet/data/gene_gene_PPI700_ENSEMBL'
     pc_genes = './TheraNet/data/protein_coding_genes_ENSEMBL'
@@ -83,11 +83,11 @@ def _bidirectional_pred_succ(G, source, target):
     Gpred = G.adj
     Gsucc = G.adj
 
-    # predecesssor and successors in search
+    # predecessors and successors in search
     pred = {source: None}
     succ = {target: None}
 
-    # initialize fringes, start with forward
+    # Initialize fringes, start with forward
     forward_fringe = [source]
     reverse_fringe = [target]
     while forward_fringe and reverse_fringe:
@@ -277,6 +277,10 @@ def calculate_proximity(network, nodes_from, nodes_to, n_random):
     
     if len(nodes_from_pruned) == 0 or len(nodes_to_pruned) == 0:
         return FINITE_INFINITY, FINITE_INFINITY, FINITE_INFINITY, FINITE_INFINITY, FINITE_INFINITY, len(nodes_from_pruned), len(nodes_to_pruned), FINITE_INFINITY
+    if len(nodes_from_pruned) < len(nodes_from):
+        return FINITE_INFINITY, FINITE_INFINITY, FINITE_INFINITY, FINITE_INFINITY, FINITE_INFINITY, len(nodes_from_pruned), len(nodes_to_pruned), FINITE_INFINITY
+    if len(nodes_to_pruned) < len(nodes_to): 
+        return FINITE_INFINITY, FINITE_INFINITY, FINITE_INFINITY, FINITE_INFINITY, FINITE_INFINITY, len(nodes_from_pruned), len(nodes_to_pruned), FINITE_INFINITY    
     
     shortest_distances = calculate_closest_distance(network, nodes_from_pruned, nodes_to_pruned)
 
