@@ -11,3 +11,4 @@ Enjoy!
 To obtain such data, remove the first four letters ('ENSG') from the Ensembl gene IDs, name the column 'ENSEMBL ID', and store the data as a .csv file. 
 There is a file named disease_target_genes.csv. You can use it as a sample.
 
+* The file TheraNet.pfd explains the details of the method and includes all discussions, related figures, and tables.
