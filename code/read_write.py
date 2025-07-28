@@ -3,9 +3,9 @@
 """
 Created on Aug 25 2023
 
-@author: s.hashemi
+@author: seirana
 
-This functions read and write different formats of files
+This function reads and writes files in various formats.
 
 Reading:
     .txt
