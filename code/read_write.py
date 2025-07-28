@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Aug 25 2023
-
 @author: seirana
 
 This function reads and writes files in various formats.
