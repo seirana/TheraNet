@@ -3,11 +3,11 @@
 """
 @author: seirana
 """
-import os
-os.system('clear')
-
 from IPython import get_ipython
 get_ipython().run_line_magic('reset','-sf')
+
+import os
+os.system('clear')
 
 import sys
 sys.path.append('./TheraNet')
