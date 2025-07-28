@@ -9,8 +9,10 @@ Enjoy!
 
 * The data folder must be downloaded.
 
+* All you need to do is run TheaNet.py on your data; dependent codes and data are available in this repository.
 >To run this code, you need a list of disease target genes with Ensembl IDs in numerical format. 
 To obtain such data, remove the first four letters ('ENSG') from the Ensembl gene IDs, name the column 'ENSEMBL ID', and store the data as a .csv file. 
 There is a file named disease_target_genes.csv. You can use it as a sample.
 
 * The file TheraNet.pfd explains the details of the method and includes all discussions, related figures, and tables.
+
